@@ -1,8 +1,6 @@
 SendMode("Input")  ; Recommended for new scripts due to its superior speed and reliability.
 SetWorkingDir(A_ScriptDir)  ; Ensures a consistent starting directory.
 
-;Wacom Display Toggle - Invoked by tilde ` key
-
 ;   #  = Windows Key
 ;   !  = Alt
 ;   ^  = Ctrl
@@ -32,9 +30,8 @@ if ProcessExist("Professional_CPL.exe")
         MouseGetPos &xpos, &ypos
         
         CoordMode "Mouse", "Window"
-        Click 140,220
-        
-        ; MouseMove(140,220)
+        Click 140,220 ;Click on Mapping tab
+        ;MouseMove(140,220)
     
         CoordMode "Mouse", "Screen"
         MouseMove(xpos,ypos) 
@@ -42,18 +39,20 @@ if ProcessExist("Professional_CPL.exe")
         WinMinimize("Wacom Tablet Properties")   
     }
     
-   mon := ControlGetchoice("ComboBox2", "Wacom Tablet Properties")
-   if (InStr(mon, 1))
-   {
-      ControlChooseIndex(4,"ComboBox2","Wacom Tablet Properties")
-   }
-   Else
-   {
-      ControlChooseIndex(3,"ComboBox2","Wacom Tablet Properties")
-   }
+    ;Toggle functionality
+    mon := ControlGetchoice("ComboBox2", "Wacom Tablet Properties")
+    if (InStr(mon, 1))
+    {
+        ControlChooseIndex(4,"ComboBox2","Wacom Tablet Properties")
+    }
+   
+    Else
+    {
+        ControlChooseIndex(3,"ComboBox2","Wacom Tablet Properties")
+    }
 
 }
 
 
-}
+} ;Win+a Hotkey End
 
